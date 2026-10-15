@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: line-bot
+
+
+line:
+  messaging:
+    key-id: ${LINE_KID}
+    channel-id: ${LINE_CHANNEL_ID}
+    jwt-lifetime: 30m
+    channel-token-lifetime: 1d
+
+infisical:
+  client-id: ${INFISICAL_CLIENT_ID}
+  client-secret: ${INFISICAL_CLIENT_SECRET}
+  project-id: ${INFISICAL_PROJECT_ID}
+  environment: ${INFISICAL_ENVIRONMENT:dev}
+  secret-path: /
