@@ -16,3 +16,9 @@ infisical:
   project-id: ${INFISICAL_PROJECT_ID}
   environment: ${INFISICAL_ENVIRONMENT:dev}
   secret-path: /
+
+client:
+  line:
+    api-base-url: ${LINE_BASE_URL:https://api.line.me}
+    connect-timeout: ${LINE_CONNECT_TIMEOUT:3s}
+    read-timeout: ${LINE_READ_TIMEOUT:3s}
