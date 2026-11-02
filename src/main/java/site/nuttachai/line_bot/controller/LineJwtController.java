@@ -6,20 +6,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import site.nuttachai.line_bot.client.LineAuthClient;
 import site.nuttachai.line_bot.dto.JwtResponse;
+import site.nuttachai.line_bot.dto.line.LineTokenResponse;
 import site.nuttachai.line_bot.service.LineJwtService;
+import site.nuttachai.line_bot.service.LineTokenService;
 
 @RestController
 @RequestMapping("/api/line")
 @RequiredArgsConstructor
 public class LineJwtController {
 
-    private final LineJwtService lineJwtService;
+    private final LineTokenService lineTokenService;
 
     @GetMapping("/jwt")
-    public ResponseEntity<JwtResponse> getJwt() {
+    public ResponseEntity<String> getJwt() {
+        String accessToken = lineTokenService.getAccessToken();
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
-                .body(lineJwtService.generateJwt());
+                .body(accessToken);
     }
 }

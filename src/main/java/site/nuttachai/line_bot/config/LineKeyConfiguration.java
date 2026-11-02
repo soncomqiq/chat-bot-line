@@ -5,8 +5,9 @@ import com.nimbusds.jose.jwk.RSAKey;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import site.nuttachai.line_bot.component.InfisicalSecretService;
+import site.nuttachai.line_bot.constant.StoreKey;
 import site.nuttachai.line_bot.exception.InvalidLineKeyException;
-import site.nuttachai.line_bot.service.InfisicalSecretService;
 
 import java.text.ParseException;
 
@@ -18,9 +19,7 @@ public class LineKeyConfiguration {
 
     @Bean
     public RSAKey lineMessagingRSAKey() throws InfisicalException {
-        String json = secrets.getRequiredSecret(
-                "LINE_PRIVATE_JWK"
-        );
+        String json = secrets.getRequiredSecret(StoreKey.LINE_PRIVATE_JWK_KEY);
 
         RSAKey key;
         try {
